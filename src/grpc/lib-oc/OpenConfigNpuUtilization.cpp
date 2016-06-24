@@ -41,7 +41,7 @@ OpenConfigNpuUtilization::iterate (JuniperNetworksSensors *handle, Telemetry::Op
 
             kv = datap->add_kv();
             kv->set_key("memory/" + mem.name() + "/lowest_util");
-            kv->set_int_value(mem.highest_util());
+            kv->set_int_value(mem.lowest_util());
 
             if (mem.average_cache_hit_rate()) {
                 kv = datap->add_kv();
