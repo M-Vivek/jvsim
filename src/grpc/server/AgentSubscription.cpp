@@ -106,6 +106,7 @@ AgentSubscription::on_message (const struct mosquitto_message* mosqmessage)
     } else if (global_config.subscribe_topic_name == TOPIC_INTERNAL_SUB_ID) {
         oc_data.set_path(stream->sensor_name());
     }
+
     oc_data.set_sequence_number(stream->sequence_number());
     oc_data.set_timestamp(stream->timestamp());
 
