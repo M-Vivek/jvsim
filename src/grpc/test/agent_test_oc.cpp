@@ -113,7 +113,19 @@ TEST_F(AgentClientOpenConfigTest, oc_paths) {
         }
     }
 
+    delete client;
+
     // Unsubscribe
+    // Create the test client
+    client = AgentClient::create(grpc::CreateChannel(GRPC_SERVER_IP_PORT,
+                                                     grpc::InsecureCredentials()),
+                                 mgmt_client_name, 0, CLIENT_LOGDIR);
+    EXPECT_TRUE(client != NULL);
+    if (!client) {
+        return;
+    }
+    EXPECT_TRUE(client->stub_ != NULL);
+
     ClientContext context_cancel;
     CancelSubscriptionRequest cancel_request;
     CancelSubscriptionReply cancel_reply;
